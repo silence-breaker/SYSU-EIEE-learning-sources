@@ -1,0 +1,100 @@
+% 编译使用xelatex，需要两次，推荐使用latexmk -xelatex -synctex=1
+%  -interaction=nonstopmode
+%  使用方法:
+%  \section{节标题} 					--> 一、节标题
+%  \subsection{分点标题} 				--> 1.分点/步标题
+%  \begin{H1/2/3} ... \end{H1/2/3} 	--> 对应层级的缩进
+\input{settings/setting}
+
+\begin{document}
+% 标题
+\begin{center}
+	{\zihao{3} \bfseries 实验X\ XXX}
+\end{center}
+
+% 正文内容
+
+\section{实验目的}
+\begin{H1}
+\begin{enumerate}
+	\item 目的一
+	\item 目的二
+\end{enumerate}
+\end{H1}
+
+\section{实验仪器}
+
+\section{实验原理}
+\begin{H1}
+下面是普通的实验原理图，如\cref{fig:test1}。
+
+\begin{figure}[H]	% 这里必须是[H],不能用[htbp],不然会到处乱跑
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/example1.jpg}
+    \caption{单图插入示例}
+    \label{fig:test1}
+\end{figure}
+
+如下方的\cref{fig:multi}所示，其中左侧为\cref{fig:left}，右侧为\cref{fig:right}。
+
+\begin{figure}[H]
+    \centering
+    % 左侧子图，占据 45% 的行宽
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/example2.jpg}
+        \caption{这是左图}
+        \label{fig:left}
+    \end{subfigure}
+    \hfill % 用弹簧空白将两张图推向两边，或者换成 \hspace{1cm} 固定间距
+    % 右侧子图
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/example3.jpg}
+        \caption{这是右图}
+        \label{fig:right}
+    \end{subfigure}
+    \caption{双图并列排版示例}
+    \label{fig:multi}
+\end{figure}
+\end{H1}
+
+\section{实验内容}
+\subsection{第一步}
+\begin{H2}
+连接电路...
+
+{\bfseries 结果分析...}
+\end{H2}
+\subsection{第二步}
+
+\subsection{第三步}
+
+\section{实验总结}
+
+\newpage
+\section{预习报告}
+关于详细的测量数据，请查阅\cref{apptab:data1}与\cref{appfig:extra}。
+
+\begin{appfigure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/example4.jpg}
+    \caption{附加示波器波形图}
+    \label{appfig:extra}
+\end{appfigure}
+
+\begin{apptable}[H]
+    \centering
+    \caption{附加的原始采集数据}
+    \label{apptab:data1}
+    \begin{tabular}{|c|c|}
+        \hline
+        时间 (s) & 电压 (V) \\
+        \hline
+        0.1 & 5.0 \\
+        0.2 & 4.8 \\
+        \hline
+    \end{tabular}
+\end{apptable}
+
+\end{document}
